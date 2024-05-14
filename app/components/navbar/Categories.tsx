@@ -1,4 +1,30 @@
+'use client';
+
+import { TbBeach } from "react-icons/tb";
+import { GiWindmill
+
+ } from "react-icons/gi";
 import Container from "../Container";
+import CategoryBox from "../CategoryBox";
+import { MdOutlineVilla } from "react-icons/md";
+
+export const categories = [
+    {
+    label: 'Beach',
+    icon: TbBeach,
+    description: 'This venue is close to the beach!'
+    },
+    {
+        label: 'Windmills',
+        icon: GiWindmill,
+        description: 'This venue has windmills!'
+    },
+    {
+        label: 'Modern',
+        icon: MdOutlineVilla,
+        description: 'This venue is modern!'
+    },
+]
 
 const Categories = () => {
     return (
@@ -10,7 +36,14 @@ const Categories = () => {
             items-center
             justify-between
             overflow-x-auto">
-                
+                {categories.map((item) => (
+                    <CategoryBox
+                    key={item.label}
+                    label={item.label}
+                    description={item.description}
+                    icon={item.icon}
+                    />
+                ))}
             </div>
         </Container>
     );

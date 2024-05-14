@@ -5,7 +5,7 @@ import Avatar from "../Avatar";
 import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
-import RegisterModal from "../modals/RegisterModal";
+
 import useLoginModal from "@/app/hooks/useLoginModal";
 import {signOut} from 'next-auth/react';
 import { SafeUser } from "@/app/types";
@@ -20,6 +20,7 @@ const UserMenu:React.FC<UserMenuProps> = ({
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
     const [isOpen, setIsOpen] = useState(false);
+    
     const toggleOpen = useCallback(()=>{
         setIsOpen((value)=>!value);
     },[]);

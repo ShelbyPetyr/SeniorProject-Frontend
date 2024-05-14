@@ -1,6 +1,6 @@
 'use client';
 
-import {signIn} from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import axios from 'axios';
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -96,7 +96,7 @@ const LoginModal = () => {
             outline
             label='Continue with Google'
             icon={FcGoogle}
-            onClick={()=>signIn('google')}
+            onClick={()=> signIn('google')}
             />
             <div className='text-neutral-500 text-center mt-4 font-light'>
                 <div className='justify-center flex flex-row items-center gap-2'>
