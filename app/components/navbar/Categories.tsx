@@ -1,32 +1,68 @@
 'use client';
 
-import { TbBeach } from "react-icons/tb";
-import { GiWindmill
-
- } from "react-icons/gi";
 import Container from "../Container";
 import CategoryBox from "../CategoryBox";
-import { MdOutlineVilla } from "react-icons/md";
+import { usePathname, useSearchParams } from "next/navigation";
+import { PiDiscoBall, PiMicrophoneStageLight } from "react-icons/pi";
+import {  GiDualityMask } from "react-icons/gi";
+import { LuCalendarHeart } from "react-icons/lu";
+import { IoFastFoodOutline, IoGameControllerOutline } from "react-icons/io5";
+import { MdOutlineHealthAndSafety, MdOutlineWorkOutline } from "react-icons/md";
 
 export const categories = [
+
     {
-    label: 'Beach',
-    icon: TbBeach,
-    description: 'This venue is close to the beach!'
+        label: 'Music',
+        icon: PiMicrophoneStageLight,
+        description: 'Music venues'
     },
     {
-        label: 'Windmills',
-        icon: GiWindmill,
-        description: 'This venue has windmills!'
+        label: 'Nightlife',
+        icon: PiDiscoBall,
+        description: 'Nightlife venues'
     },
     {
-        label: 'Modern',
-        icon: MdOutlineVilla,
-        description: 'This venue is modern!'
+        label: 'Performing & Visual Arts',
+        icon: GiDualityMask,
+        description: 'Theatric venues'
+    },
+    {
+        label: 'Holidays',
+        icon: LuCalendarHeart,
+        description: 'Holiday venues'
+    },
+    {
+        label: 'Health',
+        icon: MdOutlineHealthAndSafety,
+        description: 'Health venues'
+    },
+    {
+        label: 'Hobbies',
+        icon: IoGameControllerOutline,
+        description: 'Hobby venues'
+    },
+    {
+        label: 'Business',
+        icon: MdOutlineWorkOutline,
+        description: 'Business venues'
+    },
+    {
+        label: 'Food & Drinks',
+        icon: IoFastFoodOutline,
+        description: 'Food & drink venues'
     },
 ]
 
 const Categories = () => {
+    const params = useSearchParams();
+    const category = params?.get('category');
+    const pathname = usePathname();
+    
+    const isMainPage = pathname =='/';
+
+    if (!isMainPage) {
+        return null;
+    }
     return (
         <Container>
             <div className="
@@ -40,7 +76,7 @@ const Categories = () => {
                     <CategoryBox
                     key={item.label}
                     label={item.label}
-                    description={item.description}
+                    selected={category==item.label}
                     icon={item.icon}
                     />
                 ))}
